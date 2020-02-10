@@ -1,0 +1,44 @@
+.rh-container {
+    width: 250pt;
+    border: 1pt solid #104124;
+    padding: 15pt;
+    background-image: url('../img/background.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.rh-logo {
+    height: 30pt;
+    margin-bottom: 10pt;
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.input {
+    width: 200pt;
+    border: 1pt solid #104124 !important;
+}
+
+.textarea {
+    margin-top: 10pt !important;
+    width: 200pt !important;
+    border: 1pt solid #104124 !important;
+}
+
+.button {
+    margin-top: 10pt;
+}
+
+.button.is-primary {
+    background-color: #104124 !important;
+}
+
+.arrow-icon {
+    height: 20pt;
+    margin-top: 10pt;
+}
