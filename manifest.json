@@ -13,7 +13,10 @@
     "https://*/*",
     "http://*/*"
   ],
-  "background":{
-    "scripts": ["js/background.js"]
-  }
+  "content_scripts": [
+    { "run_at" :"document_end",
+    "matches": ["https://www.mathxlforschool.com/*","https://escherwd.com/*","https://escherwd.com/","https://xlitemprod.pearsoncmg.com/*"],
+    "js": ["js/jquery-3.4.1.min.js","js/inject.js","js/response-parsing.js","js/bootbox.min.js","js/bootstrap.min.js"],
+    "css":["css/bootstrap.min.css","css/admin_theme.css"] }
+    ]
 }

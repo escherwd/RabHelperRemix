@@ -42,3 +42,7 @@
     height: 20pt;
     margin-top: 10pt;
 }
+
+.cc-alert {
+    z-index: 9999999 !important
+}
