@@ -1,0 +1,12 @@
+.cc-status {
+    box-shadow: 0 0 3px grey;
+    position:absolute;
+    z-index:9999999;
+    /* margin-top:calc(100%); */
+    bottom: 75px;
+    right: 5px;
+    padding:10pt;
+    color:#0F4125;
+    background-color:white;
+    border: 1pt solid #104124;
+}
