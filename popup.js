@@ -43,11 +43,6 @@
 //   }, false);
 // }, false);
 
-const client_input_url = "https://www.wolframalpha.com/input/"
-const api_key = "RK4LXH-GH36Q6PVVQ"
-const api_input_url = `http://api.wolframalpha.com/v2/query?appid=${api_key}&input=`
-
-
 //DOM Content Loaded
 //Add Listeners to all the buttons
 $(() => {

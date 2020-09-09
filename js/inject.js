@@ -4,14 +4,39 @@ console.log("ChuckChecker Succesfully Injected!\nChecking HTML tree shortly...")
  * @param {JQuery<any>} ch - The content holder
 */
 function cms_inject(ch) {
-    //found the question box
-    let unparsedQuestion = ch["innerText"]
-    //stop the checker
     
     //output
-    console.log(ch)
-    console.log(unparsedQuestion,ch.text())
-    set_status(ch,"Searching...")
+    let q = ch.text()
+
+
+    set_status("Parsing Problem...")
+    console.log("question before: ",q)
+    let parsed = parseProblem(q)
+    if (parsed != null) {
+        console.log("parsed: ",parsed["parsed"])
+        set_status("Solving via Wolfram Alpha...")
+        wolframAPIRequest(api_input_url+encodeURIComponent(parsed["parsed"]),(data) => {
+            let xml = $(data)
+            if (xml.find("queryresult").attr("success") == "true") {
+                set_status("Parsing Results...")
+                let answer = parsed["handle"](data)
+                if (answer != null) {
+                    console.log(answer)
+                    set_status(answer)
+                } else {
+                    set_status("Could not parse the response. Problem could not be solved.")
+                }
+                
+            } else {
+                console.log(xml)
+                set_status("Failed to solve problem.")
+            }
+        },(error) => {
+            set_status("The request to Wolfram Alpha failed. Problem could not be solved.")
+        })
+    } else {
+        set_status("Problem not supported.")
+    }
 }
 
 /**
@@ -19,6 +44,7 @@ function cms_inject(ch) {
  * @param {string} message - The HTML message.
 */
 function set_status(message) {
+    $("body .cc-status").remove()
     $("body").prepend(`<div class='cc-status'><img src="${rabchuk_icon}">&nbsp;&nbsp;<span>${message}</span></div>`)
 }
 
